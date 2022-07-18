@@ -573,7 +573,10 @@ fn encode_bitsequence_value<T>(
 			bools.into_iter().collect::<BitVec<u32, Lsb0>>().encode_to(bytes);
 		}
 		(BitStoreTy::U64, BitOrderTy::Lsb0) => {
+			#[cfg(not(feature="32bit_target"))]
 			bools.into_iter().collect::<BitVec<u64, Lsb0>>().encode_to(bytes);
+			#[cfg(feature="32bit_target")]
+			panic!("unsupported")
 		}
 		(BitStoreTy::U8, BitOrderTy::Msb0) => {
 			bools.into_iter().collect::<BitVec<u8, Msb0>>().encode_to(bytes);
@@ -585,7 +588,10 @@ fn encode_bitsequence_value<T>(
 			bools.into_iter().collect::<BitVec<u32, Msb0>>().encode_to(bytes);
 		}
 		(BitStoreTy::U64, BitOrderTy::Msb0) => {
+			#[cfg(not(feature="32bit_target"))]
 			bools.into_iter().collect::<BitVec<u64, Msb0>>().encode_to(bytes);
+			#[cfg(feature="32bit_target")]
+			panic!("unsupported")
 		}
 	}
 
