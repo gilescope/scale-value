@@ -32,7 +32,8 @@ serde = [
 bitvec = { version = "1.0.0", default-features = false, features = ["alloc"] }
 codec = { package = "parity-scale-codec", version = "3.0.0", default-features = false, features = ["derive", "full", "bit-vec"] }
 serde = { version = "1.0.124", features = ["derive"], optional = true }
-frame-metadata = "15.0.0"
+# frame-metadata = "15.0.0"
+frame-metadata = { git="https://github.com/integritee-network/frame-metadata.git", default-features = false, features = ["v14", "full_derive"] }
 thiserror = "1.0.24"
 scale-info = { version = "2.0.0", features = ["bit-vec"] }
 either = "1.6.1"
